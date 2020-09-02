@@ -41,4 +41,4 @@ class Room:
             exits.append('w')
         if self.e_to is not None:
             exits.append('e')
-        return ", ".join(exits)
+        return " ".join(exits)

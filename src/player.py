@@ -16,3 +16,4 @@ class Player:
             print(self.current_room)
         else:
             print("You cannot move in that direction.")
+            print(self.current_room.get_exit())
