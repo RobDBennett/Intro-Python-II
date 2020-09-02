@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -36,11 +37,38 @@ room['treasure'].s_to = room['narrow']
 #
 # Main
 #
-
+print("Welcome to the Text Based adventure of walking around some rooms.")
 # Make a new player object that is currently in the 'outside' room.
-
+name = input("Please enter your name: ")
+newplayer = Player(name=name, current_room=room['outside'])
+print(f"\n {newplayer.name} is currently {newplayer.current_room}")
+cr = newplayer.current_room
+#print(room[cr].name, '\n', room[cr].description)
 # Write a loop that:
-#
+
+move_commands = ['n', 'N', 'e', 'E', 'w', 'W', 's', 'S']
+selection = "q"
+
+while True:
+    cmd = input("Enter the direction you wish to go, or enter Q to quit:")
+    if cmd in move_commands:
+        newplayer.move(cmd)
+    elif cmd in ['q', 'Q']:
+        print("Only quitters quit")
+        break
+    else:
+        print("I did not understand that command\n")
+
+
+
+
+#    current_room = newplayer.room
+#    print(room[current_room].name, room[current_room].description)
+#    selection = input(f"Where does {newplayer.name} wish to go? (n/s/e/w or q to quit).")
+
+        
+
+
 # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
