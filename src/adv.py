@@ -74,7 +74,7 @@ while True:
             print(f'{newplayer.name} currently has:')
             for x in range(len(newplayer.item)):
                 print(f'{newplayer.item[x]}')
-        elif len(newplayer.item) == 0:
+        else:
             print(f'{newplayer.name} currently has no items.')
     elif action == 'take':
         item = item.capitalize()
