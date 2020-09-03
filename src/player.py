@@ -3,10 +3,10 @@
 from room import Room
 
 class Player:
-    def __init__(self, name, current_room):
+    def __init__(self, name, current_room, item=[]):
         self.name = name 
         self.current_room = current_room
-        self.item = []
+        self.item = item
 
     def move(self, direction):
         """This should move the player"""
@@ -17,3 +17,13 @@ class Player:
         else:
             print("You cannot move in that direction.")
             print(self.current_room.get_exit())
+
+    def take(self, item):
+        self.item.append(item)
+        print(f'{self.name} picks up a {item}')
+    
+    def drop(self, item):
+        #print(f'{self.name} drops a {item}')
+        del self.item[item]
+        
+        

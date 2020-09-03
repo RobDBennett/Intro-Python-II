@@ -1,15 +1,17 @@
 # Implement a class to hold room information. This should have name and
 # description attributes.
+from item import Item
+
 
 class Room:
-    def __init__(self, name, description):
+    def __init__(self, name, description, item=[]):
         self.name = name
         self.description = description
         self.n_to = None
         self.s_to = None
         self.e_to = None
         self.w_to = None
-        self.item = []
+        self.item = item
 
     def __repr__(self):
         returnString = f"--------\n\n{self.name}\n\n  {self.description}\n\n----------"
@@ -17,7 +19,10 @@ class Room:
         return returnString
 
     def __str__(self):
-        return f'Room: {self.name} \n Description: {self.description}'
+        if len(self.item) > 0:
+            for x in range(len(self.item)):
+                print(f'There is a {self.item[x]} here.')
+        return f'Room: {self.name} \n Description: {self.description} \n'
 
     def get_direction(self, direction):
         if direction in ['n', 'N']:
@@ -42,3 +47,9 @@ class Room:
         if self.e_to is not None:
             exits.append('e')
         return " ".join(exits)
+
+    def remove_item(self, item):
+        del self.item[item]
+    
+    def add_item(self, item):
+        self.item.append(item)
